@@ -73,6 +73,18 @@ export const Sidebar = () => {
             <Github className="w-5 h-5" />
           </a>
         </div>
+        {/* CA Address */}
+        <div
+          className="mb-4 px-3 py-2.5 bg-botanical-marigold/20 border border-botanical-marigold/40 rounded-xl cursor-pointer hover:bg-botanical-marigold/30 transition-all"
+          onClick={() => {
+            navigator.clipboard.writeText('5jFhzipJmf73bkZyiV6NG8VDD3XWXfAa2vxiBFwZpump');
+            alert('CA copied to clipboard!');
+          }}
+          title="Click to copy CA"
+        >
+          <p className="text-xs text-botanical-forest font-semibold mb-1">CA:</p>
+          <p className="text-xs text-botanical-bark font-mono truncate">5jFhzipJmf73bkZyiV6NG8VDD3XWXfAa2vxiBFwZpump</p>
+        </div>
         <div className="px-4 py-3 bg-gradient-to-r from-botanical-fern/15 to-botanical-moss/10 rounded-xl border border-botanical-fern/20">
           <p className="text-xs text-botanical-forest font-medium mb-1">Market Status</p>
           <div className="flex items-center gap-2">
