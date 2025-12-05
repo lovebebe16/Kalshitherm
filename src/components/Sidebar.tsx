@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Scan, TrendingUp, Calendar, Bookmark, BarChart3, Grid3x3, Sprout } from 'lucide-react';
+import { TrendingUp, Calendar, Bookmark, BarChart3, Grid3x3, Sprout } from 'lucide-react';
 
 interface NavItemProps {
   to: string;
@@ -25,7 +25,6 @@ export const Sidebar = () => {
   const location = useLocation();
 
   const navItems = [
-    { to: '/scanner', icon: <Scan className="w-5 h-5" />, label: 'Scanner' },
     { to: '/predictions', icon: <TrendingUp className="w-5 h-5" />, label: 'Predictions' },
     { to: '/calendar', icon: <Calendar className="w-5 h-5" />, label: 'Calendar' },
     { to: '/watchlist', icon: <Bookmark className="w-5 h-5" />, label: 'Watchlist' },
