@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { TrendingUp, Calendar, Bookmark, BarChart3, Grid3x3, Sprout } from 'lucide-react';
+import { TrendingUp, Calendar, Bookmark, BarChart3, Grid3x3, Sprout, Github } from 'lucide-react';
 
 interface NavItemProps {
   to: string;
@@ -33,12 +33,12 @@ export const Sidebar = () => {
   ];
 
   return (
-    <aside className="w-64 bg-white/40 backdrop-blur-xl border-r border-white/30 p-4 flex flex-col shadow-lg">
-      <div className="flex items-center gap-2 px-4 py-3 mb-4 bg-gradient-to-r from-botanical-fern/10 to-botanical-moss/10 rounded-xl">
+    <aside className="w-64 h-full bg-white/40 backdrop-blur-xl border-r border-white/30 p-4 flex flex-col shadow-lg">
+      <div className="flex items-center gap-2 px-4 py-3 mb-4 bg-gradient-to-r from-botanical-fern/10 to-botanical-moss/10 rounded-xl flex-shrink-0">
         <Sprout className="w-5 h-5 text-botanical-fern" />
         <span className="text-sm font-semibold text-botanical-forest">Navigation</span>
       </div>
-      <nav className="space-y-1.5 flex-1">
+      <nav className="space-y-1.5 flex-1 overflow-y-auto min-h-0">
         {navItems.map((item) => (
           <NavItem
             key={item.to}
@@ -49,7 +49,30 @@ export const Sidebar = () => {
           />
         ))}
       </nav>
-      <div className="mt-auto pt-4 border-t border-botanical-sage/30">
+      <div className="pt-4 border-t border-botanical-sage/30 flex-shrink-0">
+        {/* Social Links */}
+        <div className="flex justify-center gap-4 mb-4">
+          <a
+            href="https://x.com/kalshither72459?s=21"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2.5 rounded-xl bg-white/50 hover:bg-botanical-fern hover:text-white text-botanical-bark transition-all duration-300 hover:shadow-botanical hover:scale-110"
+            title="Follow us on X"
+          >
+            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+          </a>
+          <a
+            href="https://github.com/lovebebe16/Kalshitherm.git"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2.5 rounded-xl bg-white/50 hover:bg-botanical-forest hover:text-white text-botanical-bark transition-all duration-300 hover:shadow-botanical hover:scale-110"
+            title="View on GitHub"
+          >
+            <Github className="w-5 h-5" />
+          </a>
+        </div>
         <div className="px-4 py-3 bg-gradient-to-r from-botanical-fern/15 to-botanical-moss/10 rounded-xl border border-botanical-fern/20">
           <p className="text-xs text-botanical-forest font-medium mb-1">Market Status</p>
           <div className="flex items-center gap-2">
