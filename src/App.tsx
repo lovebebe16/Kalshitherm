@@ -7,11 +7,26 @@ import { CalendarPage } from './pages/CalendarPage';
 import { WatchlistPage } from './pages/WatchlistPage';
 import { MarketsPage } from './pages/MarketsPage';
 import { CategoriesPage } from './pages/CategoriesPage';
+import { BackgroundGradientAnimation } from './components/ui/background-gradient-animation';
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-botanical-cream bg-botanical-pattern flex flex-col">
+      <BackgroundGradientAnimation
+        gradientBackgroundStart="rgb(245, 243, 237)"
+        gradientBackgroundEnd="rgb(232, 229, 222)"
+        firstColor="74, 124, 89"
+        secondColor="156, 175, 136"
+        thirdColor="107, 155, 122"
+        fourthColor="249, 166, 32"
+        fifthColor="45, 74, 54"
+        pointerColor="74, 124, 89"
+        size="90%"
+        blendingValue="multiply"
+        interactive={true}
+        containerClassName="!fixed inset-0"
+      />
+      <div className="relative z-10 min-h-screen flex flex-col">
         <Header />
         <div className="flex flex-1 overflow-hidden">
           <Sidebar />

@@ -6,7 +6,7 @@ export const Header = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   return (
-    <header className="bg-botanical-forest border-b border-botanical-fern/30 px-6 py-4 shadow-lg">
+    <header className="bg-botanical-forest/60 backdrop-blur-xl border-b border-white/20 px-6 py-4 shadow-lg">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-8">
           <div className="flex items-center gap-3">

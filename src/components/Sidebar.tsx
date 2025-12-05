@@ -11,13 +11,12 @@ interface NavItemProps {
 const NavItem = ({ to, icon, label, active }: NavItemProps) => (
   <Link
     to={to}
-    className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 ${
-      active
-        ? 'bg-botanical-fern text-botanical-cream shadow-botanical'
-        : 'text-botanical-bark/70 hover:bg-botanical-moss/15 hover:text-botanical-bark'
-    }`}
+    className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 ${active
+      ? 'bg-gradient-to-r from-botanical-fern to-botanical-moss text-botanical-cream shadow-botanical'
+      : 'text-botanical-bark hover:bg-white/50 hover:text-botanical-forest hover:shadow-sm'
+      }`}
   >
-    <span className={active ? 'text-botanical-cream' : 'text-botanical-terracotta'}>{icon}</span>
+    <span className={active ? 'text-botanical-cream' : 'text-botanical-fern'}>{icon}</span>
     <span className="font-medium">{label}</span>
   </Link>
 );
@@ -35,10 +34,10 @@ export const Sidebar = () => {
   ];
 
   return (
-    <aside className="w-64 bg-botanical-petal border-r border-botanical-sage/20 p-4 flex flex-col">
-      <div className="flex items-center gap-2 px-4 py-3 mb-4">
+    <aside className="w-64 bg-white/40 backdrop-blur-xl border-r border-white/30 p-4 flex flex-col shadow-lg">
+      <div className="flex items-center gap-2 px-4 py-3 mb-4 bg-gradient-to-r from-botanical-fern/10 to-botanical-moss/10 rounded-xl">
         <Sprout className="w-5 h-5 text-botanical-fern" />
-        <span className="text-sm font-medium text-botanical-moss">Navigation</span>
+        <span className="text-sm font-semibold text-botanical-forest">Navigation</span>
       </div>
       <nav className="space-y-1.5 flex-1">
         {navItems.map((item) => (
@@ -51,11 +50,11 @@ export const Sidebar = () => {
           />
         ))}
       </nav>
-      <div className="mt-auto pt-4 border-t border-botanical-sage/20">
-        <div className="px-4 py-3 bg-botanical-fern/10 rounded-xl">
-          <p className="text-xs text-botanical-moss font-medium mb-1">Market Status</p>
+      <div className="mt-auto pt-4 border-t border-botanical-sage/30">
+        <div className="px-4 py-3 bg-gradient-to-r from-botanical-fern/15 to-botanical-moss/10 rounded-xl border border-botanical-fern/20">
+          <p className="text-xs text-botanical-forest font-medium mb-1">Market Status</p>
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 bg-botanical-fern rounded-full animate-pulse"></span>
+            <span className="w-2 h-2 bg-botanical-fern rounded-full animate-pulse shadow-[0_0_8px_rgba(74,124,89,0.6)]"></span>
             <span className="text-sm text-botanical-bark font-semibold">Live</span>
           </div>
         </div>
