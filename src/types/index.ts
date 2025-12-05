@@ -24,6 +24,7 @@ export interface Market {
   question: string;
   category: string;
   polymarket_id: string;
+  kalshi_url: string;
   volume: number;
   liquidity: number;
   status: string;

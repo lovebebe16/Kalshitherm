@@ -21,7 +21,7 @@ export const MarketCard = ({ market, showVolume = true, showLiquidity = true, on
   };
 
   return (
-    <div 
+    <div
       onClick={onClick}
       className="bg-white rounded-2xl p-5 border border-botanical-sage/30 hover:border-botanical-fern shadow-botanical hover:shadow-botanical-lg transition-all duration-300 cursor-pointer"
     >
@@ -70,10 +70,10 @@ export const MarketCard = ({ market, showVolume = true, showLiquidity = true, on
         <MiniChart trend={market.odds_yes > 0.5 ? 'up' : 'down'} />
       </div>
 
-      <button 
+      <button
         onClick={(e) => {
           e.stopPropagation();
-          window.open(`https://polymarket.com/market/${market.polymarket_id}`, '_blank');
+          window.open(market.kalshi_url, '_blank');
         }}
         className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-botanical-fern hover:bg-botanical-forest rounded-xl text-botanical-cream text-sm font-semibold transition-all shadow-botanical hover:shadow-botanical-lg"
       >

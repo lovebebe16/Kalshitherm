@@ -17,13 +17,13 @@ export const MarketDetailModal = ({ market, onClose }: MarketDetailModalProps) =
     const data = [];
     const now = Date.now();
     const basePrice = market.odds_yes || 0.5;
-    
+
     for (let i = days; i >= 0; i--) {
       const date = new Date(now - i * 24 * 60 * 60 * 1000);
       const variation = (Math.random() - 0.5) * 0.2;
       const yesPrice = Math.max(0, Math.min(1, basePrice + variation));
       const noPrice = 1 - yesPrice;
-      
+
       data.push({
         date: date.toLocaleDateString('id-ID', { month: 'short', day: 'numeric' }),
         fullDate: date.toISOString(),
@@ -38,7 +38,7 @@ export const MarketDetailModal = ({ market, onClose }: MarketDetailModalProps) =
   const generateVolumeData = (days: number) => {
     const data = [];
     const now = Date.now();
-    
+
     for (let i = days; i >= 0; i--) {
       const date = new Date(now - i * 24 * 60 * 60 * 1000);
       data.push({
@@ -101,11 +101,10 @@ export const MarketDetailModal = ({ market, onClose }: MarketDetailModalProps) =
                   <button
                     key={range}
                     onClick={() => setTimeRange(range)}
-                    className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
-                      timeRange === range
+                    className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all ${timeRange === range
                         ? 'bg-botanical-fern text-botanical-cream shadow-botanical'
                         : 'bg-botanical-cream text-botanical-bark hover:bg-botanical-moss/20'
-                    }`}
+                      }`}
                   >
                     {range}
                   </button>
@@ -118,13 +117,13 @@ export const MarketDetailModal = ({ market, onClose }: MarketDetailModalProps) =
               <ResponsiveContainer width="100%" height={300}>
                 <AreaChart data={priceData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                  <XAxis 
-                    dataKey="date" 
-                    stroke="#6b9b7a" 
+                  <XAxis
+                    dataKey="date"
+                    stroke="#6b9b7a"
                     style={{ fontSize: '12px' }}
                   />
-                  <YAxis 
-                    stroke="#6b9b7a" 
+                  <YAxis
+                    stroke="#6b9b7a"
                     style={{ fontSize: '12px' }}
                     domain={[0, 100]}
                   />
@@ -164,13 +163,13 @@ export const MarketDetailModal = ({ market, onClose }: MarketDetailModalProps) =
               <ResponsiveContainer width="100%" height={200}>
                 <BarChart data={volumeData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#d4cfbf" />
-                  <XAxis 
-                    dataKey="date" 
-                    stroke="#6b9b7a" 
+                  <XAxis
+                    dataKey="date"
+                    stroke="#6b9b7a"
                     style={{ fontSize: '12px' }}
                   />
-                  <YAxis 
-                    stroke="#6b9b7a" 
+                  <YAxis
+                    stroke="#6b9b7a"
                     style={{ fontSize: '12px' }}
                   />
                   <Tooltip
@@ -271,7 +270,10 @@ export const MarketDetailModal = ({ market, onClose }: MarketDetailModalProps) =
 
             {/* Action Buttons */}
             <div className="space-y-2">
-              <button className="w-full px-4 py-3 bg-botanical-fern hover:bg-botanical-forest rounded-xl text-botanical-cream font-semibold transition-all shadow-botanical hover:shadow-botanical-lg flex items-center justify-center gap-2">
+              <button
+                onClick={() => window.open(market.kalshi_url, '_blank')}
+                className="w-full px-4 py-3 bg-botanical-fern hover:bg-botanical-forest rounded-xl text-botanical-cream font-semibold transition-all shadow-botanical hover:shadow-botanical-lg flex items-center justify-center gap-2"
+              >
                 <TrendingUp className="w-4 h-4" />
                 Go to Market
               </button>
