@@ -33,6 +33,7 @@ export const ScannerPage = () => {
           ][i % 8],
           category: ['crypto', 'politics', 'technology', 'finance', 'business'][Math.floor(Math.random() * 5)],
           polymarket_id: `pm-demo-${i}`,
+          kalshi_url: `https://kalshi.com/markets/demo-${i}`,
           volume: baseVolume * (0.5 + Math.random()),
           liquidity: baseVolume * 0.4 * (0.5 + Math.random()),
           status: 'active',
