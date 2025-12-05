@@ -3,7 +3,7 @@ import { Search, MapPin, Plus, X } from 'lucide-react';
 import { EnhancedPredictionCard } from '../components/EnhancedPredictionCard';
 
 const defaultCities = [
-  'Jakarta',
+  'Sydney',
   'Tokyo',
   'New York',
   'London',
