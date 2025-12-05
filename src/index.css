@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 1rem;
+    --botanical-fern: #4a7c59;
+    --botanical-marigold: #f9a620;
+    --botanical-terracotta: #b7472a;
+    --botanical-cream: #f5f3ed;
+    --botanical-forest: #2d4a36;
+    --botanical-moss: #6b9b7a;
+    --botanical-bark: #3d2c1f;
+    --botanical-sage: #9caf88;
+    --botanical-petal: #fff8f0;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-botanical-cream text-botanical-bark font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .btn-botanical {
+    @apply px-4 py-2 bg-botanical-fern text-botanical-cream rounded-lg 
+           hover:bg-botanical-forest transition-all duration-300 
+           shadow-botanical hover:shadow-botanical-lg font-medium;
+  }
+
+  .btn-marigold {
+    @apply px-4 py-2 bg-botanical-marigold text-botanical-bark rounded-lg 
+           hover:brightness-110 transition-all duration-300 
+           shadow-warm hover:shadow-warm-lg font-medium;
+  }
+
+  .btn-terracotta {
+    @apply px-4 py-2 bg-botanical-terracotta text-botanical-cream rounded-lg 
+           hover:brightness-110 transition-all duration-300 font-medium;
+  }
+
+  .card-botanical {
+    @apply bg-white rounded-xl border border-botanical-sage/30 
+           shadow-botanical hover:shadow-botanical-lg 
+           transition-all duration-300;
+  }
+
+  .input-botanical {
+    @apply bg-botanical-petal border border-botanical-sage/40 rounded-lg 
+           px-4 py-2 text-botanical-bark placeholder-botanical-bark/50
+           focus:outline-none focus:ring-2 focus:ring-botanical-fern/50 
+           focus:border-botanical-fern transition-all duration-200;
+  }
+
+  .badge-fern {
+    @apply px-2 py-1 bg-botanical-fern/15 text-botanical-fern 
+           rounded-md text-xs font-medium border border-botanical-fern/20;
+  }
+
+  .badge-marigold {
+    @apply px-2 py-1 bg-botanical-marigold/15 text-botanical-bark 
+           rounded-md text-xs font-medium border border-botanical-marigold/30;
+  }
+
+  .badge-terracotta {
+    @apply px-2 py-1 bg-botanical-terracotta/15 text-botanical-terracotta 
+           rounded-md text-xs font-medium border border-botanical-terracotta/20;
+  }
+}
+
+@layer utilities {
+  .text-gradient-botanical {
+    @apply bg-gradient-to-r from-botanical-fern to-botanical-moss 
+           bg-clip-text text-transparent;
+  }
+
+  .bg-botanical-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5c-2 8-8 14-16 16 8 2 14 8 16 16 2-8 8-14 16-16-8-2-14-8-16-16z' fill='%234a7c59' fill-opacity='0.03'/%3E%3C/svg%3E");
+  }
+
+  .scrollbar-botanical {
+    scrollbar-width: thin;
+    scrollbar-color: var(--botanical-moss) var(--botanical-cream);
+  }
+
+  .scrollbar-botanical::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .scrollbar-botanical::-webkit-scrollbar-track {
+    background: var(--botanical-cream);
+    border-radius: 4px;
+  }
+
+  .scrollbar-botanical::-webkit-scrollbar-thumb {
+    background: var(--botanical-moss);
+    border-radius: 4px;
+  }
+
+  .scrollbar-botanical::-webkit-scrollbar-thumb:hover {
+    background: var(--botanical-fern);
+  }
+}
+
+img {
+  object-position: top;
+}
+
+.fixed {
+  position: fixed;
+}
+
+::selection {
+  background-color: var(--botanical-fern);
+  color: var(--botanical-cream);
+}
