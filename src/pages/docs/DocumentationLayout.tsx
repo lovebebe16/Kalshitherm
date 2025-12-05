@@ -140,7 +140,11 @@ const CollapsibleSection = ({ section, isExpanded, onToggle, currentPath }: Coll
   );
 };
 
-export const DocumentationLayout = () => {
+interface DocumentationLayoutProps {
+  children?: React.ReactNode;
+}
+
+export const DocumentationLayout = ({ children }: DocumentationLayoutProps) => {
   const location = useLocation();
   const [expandedSections, setExpandedSections] = useState<string[]>(['Getting Started', 'How It Works']);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -250,7 +254,7 @@ export const DocumentationLayout = () => {
       {/* Main Content */}
       <main className="flex-1 overflow-y-auto scrollbar-botanical">
         <div className="max-w-4xl mx-auto px-6 py-12 lg:px-8">
-          <Outlet />
+          {children || <Outlet />}
         </div>
       </main>
     </div>
