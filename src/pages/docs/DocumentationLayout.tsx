@@ -126,8 +126,8 @@ const CollapsibleSection = ({ section, isExpanded, onToggle, currentPath }: Coll
               key={item.path}
               to={item.path}
               className={`flex items-center gap-2 px-3 py-2 text-sm rounded-xl transition-all ${currentPath === item.path
-                  ? 'bg-botanical-fern text-botanical-cream shadow-botanical'
-                  : 'text-botanical-moss hover:bg-botanical-moss/10 hover:text-botanical-bark'
+                ? 'bg-botanical-fern text-botanical-cream shadow-botanical'
+                : 'text-botanical-moss hover:bg-botanical-moss/10 hover:text-botanical-bark'
                 }`}
             >
               {item.icon}
@@ -191,8 +191,8 @@ export const DocumentationLayout = () => {
         <Link
           to="/docs"
           className={`flex items-center gap-2 px-3 py-2.5 rounded-xl transition-all mb-4 ${location.pathname === '/docs'
-              ? 'bg-botanical-fern text-botanical-cream shadow-botanical'
-              : 'text-botanical-bark hover:bg-botanical-moss/10'
+            ? 'bg-botanical-fern text-botanical-cream shadow-botanical'
+            : 'text-botanical-bark hover:bg-botanical-moss/10'
             }`}
         >
           <Home className="w-4 h-4" />
@@ -256,3 +256,5 @@ export const DocumentationLayout = () => {
     </div>
   );
 };
+
+export default DocumentationLayout;

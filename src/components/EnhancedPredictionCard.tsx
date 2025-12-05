@@ -115,7 +115,7 @@ export const EnhancedPredictionCard = ({ city }: EnhancedPredictionCardProps) =>
       },
       current: {
         temp: todayData?.temperature || 0,
-        temp_fahrenheit: ((todayData?.temperature || 0) * 9/5) + 32,
+        temp_fahrenheit: ((todayData?.temperature || 0) * 9 / 5) + 32,
         feels_like: (todayData?.temperature || 0) - 1,
         humidity: todayData?.humidity || 65,
         wind_speed: todayData?.windSpeedMax || 0,
@@ -126,7 +126,7 @@ export const EnhancedPredictionCard = ({ city }: EnhancedPredictionCardProps) =>
         high_celsius: marketPrediction.forecastHighC,
         low_celsius: todayData?.temperatureMin || 0,
         high_fahrenheit: marketPrediction.forecastHighF,
-        low_fahrenheit: ((todayData?.temperatureMin || 0) * 9/5) + 32,
+        low_fahrenheit: ((todayData?.temperatureMin || 0) * 9 / 5) + 32,
         suggested_option: marketPrediction.suggestedOption,
         hourly_breakdown: hourlyBreakdown,
       },
@@ -177,21 +177,19 @@ export const EnhancedPredictionCard = ({ city }: EnhancedPredictionCardProps) =>
             <div className="flex gap-1 bg-botanical-cream rounded-xl p-1">
               <button
                 onClick={() => setMarketView('today')}
-                className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
-                  marketView === 'today'
+                className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${marketView === 'today'
                     ? 'bg-botanical-fern text-botanical-cream shadow-botanical'
                     : 'text-botanical-bark hover:bg-botanical-sage/20'
-                }`}
+                  }`}
               >
                 Today
               </button>
               <button
                 onClick={() => setMarketView('tomorrow')}
-                className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
-                  marketView === 'tomorrow'
+                className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${marketView === 'tomorrow'
                     ? 'bg-botanical-fern text-botanical-cream shadow-botanical'
                     : 'text-botanical-bark hover:bg-botanical-sage/20'
-                }`}
+                  }`}
               >
                 Tomorrow
               </button>
@@ -225,11 +223,10 @@ export const EnhancedPredictionCard = ({ city }: EnhancedPredictionCardProps) =>
           </div>
 
           {/* Suggested Option */}
-          <div className={`rounded-2xl p-5 border ${
-            marketPrediction.suggestedOption === 'Higher'
+          <div className={`rounded-2xl p-5 border ${marketPrediction.suggestedOption === 'Higher'
               ? 'bg-botanical-fern/10 border-botanical-fern/30'
               : 'bg-botanical-terracotta/10 border-botanical-terracotta/30'
-          }`}>
+            }`}>
             <p className="text-botanical-moss text-sm mb-2">Suggested Option</p>
             <div className="flex items-center gap-2">
               {marketPrediction.suggestedOption === 'Higher' ? (
@@ -237,11 +234,10 @@ export const EnhancedPredictionCard = ({ city }: EnhancedPredictionCardProps) =>
               ) : (
                 <ChevronDown className="w-8 h-8 text-botanical-terracotta" />
               )}
-              <p className={`text-3xl font-display font-bold ${
-                marketPrediction.suggestedOption === 'Higher'
+              <p className={`text-3xl font-display font-bold ${marketPrediction.suggestedOption === 'Higher'
                   ? 'text-botanical-fern'
                   : 'text-botanical-terracotta'
-              }`}>
+                }`}>
                 {marketPrediction.suggestedOption}
               </p>
             </div>
@@ -274,199 +270,197 @@ export const EnhancedPredictionCard = ({ city }: EnhancedPredictionCardProps) =>
             <button
               key={range}
               onClick={() => setForecastRange(range)}
-              className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
-                forecastRange === range
+              className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all ${forecastRange === range
                   ? 'bg-botanical-fern text-botanical-cream shadow-botanical'
                   : 'bg-botanical-cream text-botanical-bark hover:bg-botanical-sage/20'
-              }`}
+                }`}
             >
               {range === '5days' ? 'Next 5 Days' : range === '10days' ? 'Next 10 Days' : 'Next 15 Days'}
             </button>
           ))}
         </div>
 
-      {/* Stats Cards */}
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-        {[
-          { label: 'Avg Temp', value: `${stats.avgTemp}°C`, icon: '🌡️', gradient: 'from-botanical-marigold to-botanical-terracotta' },
-          { label: 'Max Temp', value: `${stats.maxTemp}°C`, icon: '📈', gradient: 'from-botanical-terracotta to-red-500' },
-          { label: 'Min Temp', value: `${stats.minTemp}°C`, icon: '❄️', gradient: 'from-blue-400 to-botanical-fern' },
-          { label: 'Expected Rain', value: `${stats.expectedRain}mm`, icon: '🌧️', gradient: 'from-botanical-fern to-botanical-moss' },
-          { label: 'Confidence', value: `${stats.avgConfidence}%`, icon: '🎯', gradient: 'from-botanical-moss to-botanical-forest' },
-        ].map((stat, idx) => (
-          <div
-            key={idx}
-            className={`bg-gradient-to-br ${stat.gradient} rounded-2xl p-4 text-botanical-cream shadow-botanical`}
-          >
-            <div className="text-2xl mb-2">{stat.icon}</div>
-            <p className="text-xs opacity-90">{stat.label}</p>
-            <p className="text-lg font-display font-bold">{stat.value}</p>
-          </div>
-        ))}
-      </div>
-
-      {/* Metric Selector */}
-      <div className="flex gap-2 flex-wrap">
-        {([
-          { key: 'temperature', label: '🌡️ Temperature' },
-          { key: 'precipitation', label: '💧 Precipitation' },
-          { key: 'wind', label: '💨 Wind' },
-          { key: 'combined', label: 'Combined', icon: BarChart3 },
-        ] as const).map((metric) => (
-          <button
-            key={metric.key}
-            onClick={() => setSelectedMetric(metric.key)}
-            className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 ${
-              selectedMetric === metric.key
-                ? 'bg-botanical-fern text-botanical-cream shadow-botanical'
-                : 'bg-botanical-cream text-botanical-bark hover:bg-botanical-sage/20'
-            }`}
-          >
-            {metric.icon ? <metric.icon size={16} /> : null}
-            {metric.label}
-          </button>
-        ))}
-      </div>
-
-      {/* Main Chart */}
-      <div className="bg-botanical-cream/50 rounded-2xl p-5 border border-botanical-sage/20">
-        <h3 className="text-lg font-display font-semibold text-botanical-bark mb-4">
-          {selectedMetric === 'temperature' && '🌡️ Temperature Forecast'}
-          {selectedMetric === 'precipitation' && '💧 Precipitation Forecast'}
-          {selectedMetric === 'wind' && '💨 Wind Speed Forecast'}
-          {selectedMetric === 'combined' && <span className="flex items-center gap-2"><BarChart3 size={20} /> Combined Forecast</span>}
-        </h3>
-
-        <ResponsiveContainer width="100%" height={300}>
-          {selectedMetric === 'temperature' ? (
-            <ComposedChart data={displayData}>
-              <defs>
-                <linearGradient id="tempGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#b7472a" stopOpacity={0.8} />
-                  <stop offset="95%" stopColor="#b7472a" stopOpacity={0} />
-                </linearGradient>
-              </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="rgba(74, 124, 89, 0.2)" />
-              <XAxis dataKey="date" stroke="#6b7280" fontSize={12} />
-              <YAxis stroke="#6b7280" fontSize={12} />
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: 'white',
-                  border: '1px solid #d4c5b0',
-                  borderRadius: '12px',
-                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                }}
-              />
-              <Area type="monotone" dataKey="temperatureMax" stroke="#b7472a" fill="url(#tempGradient)" name="Max Temp" />
-              <Line type="monotone" dataKey="temperature" stroke="#4a7c59" strokeWidth={2} dot={{ fill: '#4a7c59' }} name="Avg Temp" />
-              <Line type="monotone" dataKey="temperatureMin" stroke="#f9a620" strokeWidth={2} dot={{ fill: '#f9a620' }} name="Min Temp" />
-            </ComposedChart>
-          ) : selectedMetric === 'precipitation' ? (
-            <AreaChart data={displayData}>
-              <defs>
-                <linearGradient id="rainGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#4a7c59" stopOpacity={0.8} />
-                  <stop offset="95%" stopColor="#4a7c59" stopOpacity={0} />
-                </linearGradient>
-              </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="rgba(74, 124, 89, 0.2)" />
-              <XAxis dataKey="date" stroke="#6b7280" fontSize={12} />
-              <YAxis stroke="#6b7280" fontSize={12} />
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: 'white',
-                  border: '1px solid #d4c5b0',
-                  borderRadius: '12px',
-                }}
-              />
-              <Area type="monotone" dataKey="precipitationSum" stroke="#4a7c59" fill="url(#rainGradient)" name="Precipitation (mm)" />
-            </AreaChart>
-          ) : selectedMetric === 'wind' ? (
-            <LineChart data={displayData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="rgba(74, 124, 89, 0.2)" />
-              <XAxis dataKey="date" stroke="#6b7280" fontSize={12} />
-              <YAxis stroke="#6b7280" fontSize={12} />
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: 'white',
-                  border: '1px solid #d4c5b0',
-                  borderRadius: '12px',
-                }}
-              />
-              <Line type="monotone" dataKey="windSpeedMax" stroke="#b7472a" strokeWidth={3} dot={{ fill: '#b7472a', r: 5 }} name="Wind (km/h)" />
-            </LineChart>
-          ) : (
-            <ComposedChart data={displayData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="rgba(74, 124, 89, 0.2)" />
-              <XAxis dataKey="date" stroke="#6b7280" fontSize={12} />
-              <YAxis stroke="#6b7280" fontSize={12} />
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: 'white',
-                  border: '1px solid #d4c5b0',
-                  borderRadius: '12px',
-                }}
-              />
-              <Bar dataKey="precipitationSum" fill="#4a7c59" opacity={0.6} name="Rain (mm)" />
-              <Line type="monotone" dataKey="temperature" stroke="#f9a620" strokeWidth={2} name="Temp (°C)" />
-            </ComposedChart>
-          )}
-        </ResponsiveContainer>
-      </div>
-
-      {/* Daily Forecast Cards */}
-      <div className="space-y-3">
-        <h3 className="text-lg font-display font-semibold text-botanical-bark">Daily Details</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3">
-          {displayData.slice(0, 5).map((forecast, idx) => (
+        {/* Stats Cards */}
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+          {[
+            { label: 'Avg Temp', value: `${stats.avgTemp}°C`, icon: '🌡️', gradient: 'from-botanical-marigold to-botanical-terracotta' },
+            { label: 'Max Temp', value: `${stats.maxTemp}°C`, icon: '📈', gradient: 'from-botanical-terracotta to-red-500' },
+            { label: 'Min Temp', value: `${stats.minTemp}°C`, icon: '❄️', gradient: 'from-blue-400 to-botanical-fern' },
+            { label: 'Expected Rain', value: `${stats.expectedRain}mm`, icon: '🌧️', gradient: 'from-botanical-fern to-botanical-moss' },
+            { label: 'Confidence', value: `${stats.avgConfidence}%`, icon: '🎯', gradient: 'from-botanical-moss to-botanical-forest' },
+          ].map((stat, idx) => (
             <div
               key={idx}
-              className="bg-white rounded-2xl p-4 border border-botanical-sage/30 shadow-botanical hover:shadow-botanical-lg transition-all hover:-translate-y-1"
+              className={`bg-gradient-to-br ${stat.gradient} rounded-2xl p-4 text-botanical-cream shadow-botanical`}
             >
-              <div className="flex items-center justify-between mb-3">
-                <div>
-                  <p className="font-display font-semibold text-botanical-bark">{forecast.day}</p>
-                  <p className="text-xs text-botanical-moss">{forecast.date}</p>
-                </div>
-                <span className="text-xs px-2 py-1 bg-botanical-fern/20 text-botanical-fern rounded-lg font-semibold">
-                  {forecast.confidence}%
-                </span>
-              </div>
-
-              <p className="text-2xl mb-3">{forecast.condition.split(' ')[0]}</p>
-
-              <div className="space-y-2 text-sm">
-                <div className="flex items-center justify-between">
-                  <span className="text-botanical-moss flex items-center gap-1">
-                    <Sun size={14} /> Temp
-                  </span>
-                  <span className="font-semibold text-botanical-bark">{forecast.temperature}°C</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-botanical-moss flex items-center gap-1">
-                    <TrendingUp size={14} /> Range
-                  </span>
-                  <span className="font-semibold text-botanical-bark">
-                    {forecast.temperatureMin}° - {forecast.temperatureMax}°C
-                  </span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-botanical-moss flex items-center gap-1">
-                    <Droplets size={14} /> Rain
-                  </span>
-                  <span className="font-semibold text-botanical-bark">{forecast.precipitationSum}mm</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-botanical-moss flex items-center gap-1">
-                    <Wind size={14} /> Wind
-                  </span>
-                  <span className="font-semibold text-botanical-bark">{forecast.windSpeedMax} km/h</span>
-                </div>
-              </div>
+              <div className="text-2xl mb-2">{stat.icon}</div>
+              <p className="text-xs opacity-90">{stat.label}</p>
+              <p className="text-lg font-display font-bold">{stat.value}</p>
             </div>
           ))}
         </div>
-      </div>
+
+        {/* Metric Selector */}
+        <div className="flex gap-2 flex-wrap">
+          {([
+            { key: 'temperature' as const, label: '🌡️ Temperature', icon: null },
+            { key: 'precipitation' as const, label: '💧 Precipitation', icon: null },
+            { key: 'wind' as const, label: '💨 Wind', icon: null },
+            { key: 'combined' as const, label: 'Combined', icon: BarChart3 },
+          ]).map((metric) => (
+            <button
+              key={metric.key}
+              onClick={() => setSelectedMetric(metric.key)}
+              className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 ${selectedMetric === metric.key
+                  ? 'bg-botanical-fern text-botanical-cream shadow-botanical'
+                  : 'bg-botanical-cream text-botanical-bark hover:bg-botanical-sage/20'
+                }`}
+            >
+              {metric.icon ? <metric.icon size={16} /> : null}
+              {metric.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Main Chart */}
+        <div className="bg-botanical-cream/50 rounded-2xl p-5 border border-botanical-sage/20">
+          <h3 className="text-lg font-display font-semibold text-botanical-bark mb-4">
+            {selectedMetric === 'temperature' && '🌡️ Temperature Forecast'}
+            {selectedMetric === 'precipitation' && '💧 Precipitation Forecast'}
+            {selectedMetric === 'wind' && '💨 Wind Speed Forecast'}
+            {selectedMetric === 'combined' && <span className="flex items-center gap-2"><BarChart3 size={20} /> Combined Forecast</span>}
+          </h3>
+
+          <ResponsiveContainer width="100%" height={300}>
+            {selectedMetric === 'temperature' ? (
+              <ComposedChart data={displayData}>
+                <defs>
+                  <linearGradient id="tempGradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#b7472a" stopOpacity={0.8} />
+                    <stop offset="95%" stopColor="#b7472a" stopOpacity={0} />
+                  </linearGradient>
+                </defs>
+                <CartesianGrid strokeDasharray="3 3" stroke="rgba(74, 124, 89, 0.2)" />
+                <XAxis dataKey="date" stroke="#6b7280" fontSize={12} />
+                <YAxis stroke="#6b7280" fontSize={12} />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: 'white',
+                    border: '1px solid #d4c5b0',
+                    borderRadius: '12px',
+                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                  }}
+                />
+                <Area type="monotone" dataKey="temperatureMax" stroke="#b7472a" fill="url(#tempGradient)" name="Max Temp" />
+                <Line type="monotone" dataKey="temperature" stroke="#4a7c59" strokeWidth={2} dot={{ fill: '#4a7c59' }} name="Avg Temp" />
+                <Line type="monotone" dataKey="temperatureMin" stroke="#f9a620" strokeWidth={2} dot={{ fill: '#f9a620' }} name="Min Temp" />
+              </ComposedChart>
+            ) : selectedMetric === 'precipitation' ? (
+              <AreaChart data={displayData}>
+                <defs>
+                  <linearGradient id="rainGradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#4a7c59" stopOpacity={0.8} />
+                    <stop offset="95%" stopColor="#4a7c59" stopOpacity={0} />
+                  </linearGradient>
+                </defs>
+                <CartesianGrid strokeDasharray="3 3" stroke="rgba(74, 124, 89, 0.2)" />
+                <XAxis dataKey="date" stroke="#6b7280" fontSize={12} />
+                <YAxis stroke="#6b7280" fontSize={12} />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: 'white',
+                    border: '1px solid #d4c5b0',
+                    borderRadius: '12px',
+                  }}
+                />
+                <Area type="monotone" dataKey="precipitationSum" stroke="#4a7c59" fill="url(#rainGradient)" name="Precipitation (mm)" />
+              </AreaChart>
+            ) : selectedMetric === 'wind' ? (
+              <LineChart data={displayData}>
+                <CartesianGrid strokeDasharray="3 3" stroke="rgba(74, 124, 89, 0.2)" />
+                <XAxis dataKey="date" stroke="#6b7280" fontSize={12} />
+                <YAxis stroke="#6b7280" fontSize={12} />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: 'white',
+                    border: '1px solid #d4c5b0',
+                    borderRadius: '12px',
+                  }}
+                />
+                <Line type="monotone" dataKey="windSpeedMax" stroke="#b7472a" strokeWidth={3} dot={{ fill: '#b7472a', r: 5 }} name="Wind (km/h)" />
+              </LineChart>
+            ) : (
+              <ComposedChart data={displayData}>
+                <CartesianGrid strokeDasharray="3 3" stroke="rgba(74, 124, 89, 0.2)" />
+                <XAxis dataKey="date" stroke="#6b7280" fontSize={12} />
+                <YAxis stroke="#6b7280" fontSize={12} />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: 'white',
+                    border: '1px solid #d4c5b0',
+                    borderRadius: '12px',
+                  }}
+                />
+                <Bar dataKey="precipitationSum" fill="#4a7c59" opacity={0.6} name="Rain (mm)" />
+                <Line type="monotone" dataKey="temperature" stroke="#f9a620" strokeWidth={2} name="Temp (°C)" />
+              </ComposedChart>
+            )}
+          </ResponsiveContainer>
+        </div>
+
+        {/* Daily Forecast Cards */}
+        <div className="space-y-3">
+          <h3 className="text-lg font-display font-semibold text-botanical-bark">Daily Details</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3">
+            {displayData.slice(0, 5).map((forecast, idx) => (
+              <div
+                key={idx}
+                className="bg-white rounded-2xl p-4 border border-botanical-sage/30 shadow-botanical hover:shadow-botanical-lg transition-all hover:-translate-y-1"
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <div>
+                    <p className="font-display font-semibold text-botanical-bark">{forecast.day}</p>
+                    <p className="text-xs text-botanical-moss">{forecast.date}</p>
+                  </div>
+                  <span className="text-xs px-2 py-1 bg-botanical-fern/20 text-botanical-fern rounded-lg font-semibold">
+                    {forecast.confidence}%
+                  </span>
+                </div>
+
+                <p className="text-2xl mb-3">{forecast.condition.split(' ')[0]}</p>
+
+                <div className="space-y-2 text-sm">
+                  <div className="flex items-center justify-between">
+                    <span className="text-botanical-moss flex items-center gap-1">
+                      <Sun size={14} /> Temp
+                    </span>
+                    <span className="font-semibold text-botanical-bark">{forecast.temperature}°C</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-botanical-moss flex items-center gap-1">
+                      <TrendingUp size={14} /> Range
+                    </span>
+                    <span className="font-semibold text-botanical-bark">
+                      {forecast.temperatureMin}° - {forecast.temperatureMax}°C
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-botanical-moss flex items-center gap-1">
+                      <Droplets size={14} /> Rain
+                    </span>
+                    <span className="font-semibold text-botanical-bark">{forecast.precipitationSum}mm</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-botanical-moss flex items-center gap-1">
+                      <Wind size={14} /> Wind
+                    </span>
+                    <span className="font-semibold text-botanical-bark">{forecast.windSpeedMax} km/h</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
 
         {/* Air Quality Info */}
         {weatherData.airQuality && (
