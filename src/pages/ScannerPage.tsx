@@ -131,15 +131,15 @@ export const ScannerPage = () => {
   return (
     <div className="p-6">
       {selectedMarket && (
-        <MarketDetailModal 
+        <MarketDetailModal
           market={selectedMarket}
           onClose={() => setSelectedMarket(null)}
         />
       )}
-      
+
       <div className="mb-8">
         <h1 className="text-3xl font-display font-bold text-botanical-bark mb-2">Market Scanner</h1>
-        <p className="text-botanical-moss">Discover trending markets across Polymarket</p>
+        <p className="text-botanical-moss">Discover trending markets across Polymarket and Kalshi</p>
       </div>
 
       <div className="grid grid-cols-4 gap-4 mb-8">
@@ -147,11 +147,10 @@ export const ScannerPage = () => {
           <button
             key={category.key}
             onClick={() => setActiveCategory(category.key)}
-            className={`p-5 rounded-2xl border-2 transition-all duration-300 ${
-              activeCategory === category.key
+            className={`p-5 rounded-2xl border-2 transition-all duration-300 ${activeCategory === category.key
                 ? `${category.bgColor} ${category.borderColor} shadow-botanical`
                 : 'bg-white border-botanical-sage/30 hover:border-botanical-moss shadow-warm'
-            }`}
+              }`}
           >
             <div className="flex items-center justify-between mb-3">
               <div className={category.color}>{category.icon}</div>
@@ -173,8 +172,8 @@ export const ScannerPage = () => {
 
       <div className="grid grid-cols-3 gap-5">
         {activeData?.data?.markets.map((market) => (
-          <MarketCard 
-            key={market.id || market.polymarket_id} 
+          <MarketCard
+            key={market.id || market.polymarket_id}
             market={market}
             onClick={() => setSelectedMarket(market)}
           />

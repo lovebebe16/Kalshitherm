@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Search, Bell, Leaf } from 'lucide-react';
+import { Search, Bell } from 'lucide-react';
 import { WalletButton } from './WalletButton';
 
 export const Header = () => {
@@ -10,8 +10,8 @@ export const Header = () => {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-8">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-botanical-fern to-botanical-marigold rounded-xl flex items-center justify-center shadow-botanical">
-              <Leaf className="w-5 h-5 text-botanical-cream" />
+            <div className="w-10 h-10 bg-gradient-to-br from-botanical-fern to-botanical-marigold rounded-xl flex items-center justify-center shadow-botanical overflow-hidden">
+              <img src="/logo.png" alt="Kalshitherm Logo" className="w-full h-full object-contain" />
             </div>
             <h1 className="text-xl font-display font-bold text-botanical-cream">Kalshitherm</h1>
             <div className="ml-2 px-3 py-1.5 bg-botanical-moss/20 border border-botanical-moss/40 rounded-lg text-xs text-botanical-sage font-medium flex items-center gap-1.5">
